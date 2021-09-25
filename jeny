@@ -1,0 +1,27 @@
+#!/bin/bash
+cat=$1
+folder=$2
+in=$3
+template="template_py3_codeforce.py"
+
+if [[ $cat == "cf" ]]; then
+    template="template_py3_codeforce.py"
+elif [[ $cat == "ks" ]]; then
+    template="template_py3_kick_start.py"
+else
+    echo "error. wrong arg"
+    exit 1
+fi
+
+if [[ $folder == "" ]]; then
+    echo "folder is empty"
+    exit 1
+fi
+
+if [[ $in == "" ]]; then
+    in="1.in"
+fi
+
+mkdir -p $PWD/$folder && cd $folder
+cp ~/bin/$template $PWD/solve.py
+cp ~/bin/$in $PWD/$in
